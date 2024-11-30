@@ -5,3 +5,8 @@
 body {
     @apply bg-zinc-900 text-white;
 }
+
+dialog {
+    max-width: 100svw;
+    max-height: 100svh;
+}
