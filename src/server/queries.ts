@@ -3,8 +3,8 @@ import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
 import { images } from "./db/schema";
 import { and, eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import analyticsServerClient from "./analytics";
 
 export async function getMyImages() {
   const user = await auth();
@@ -45,6 +45,12 @@ export async function deleteImage(id: number) {
       eq(images.userId, user.userId)
     )
   );
+
+  analyticsServerClient.capture({
+    distinctId: user.userId,
+    event: "delete_image",
+    properties: { imageId: id },
+  });
 
   redirect("/");
 }
