@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-dialog:modal {
-    max-width: 100svw;
-    max-height: 100svh;
-}
-
 @layer base {
   :root {
         --background: 0 0% 100%;
@@ -70,4 +65,17 @@ dialog:modal {
   body {
     @apply bg-background text-foreground;
     }
+}
+
+dialog:modal {
+  max-width: 100svw;
+  max-height: 100svh;
+}
+
+.spinner_z9k8 {
+  transform-origin: center;
+  animation: spinner_StKS .75s infinite linear;
+}
+@keyframes spinner_StKS {
+  100% { transform: rotate(360deg); }
 }
