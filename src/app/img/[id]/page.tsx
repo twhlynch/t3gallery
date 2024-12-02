@@ -8,5 +8,5 @@ export default async function PhotoPage({
   const idAsNumber = Number((await params).id);
   if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
 
-  return <FullPageImageView id={idAsNumber} />
+  return <FullPageImageView id={idAsNumber} />;
 }

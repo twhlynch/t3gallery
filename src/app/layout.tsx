@@ -1,5 +1,5 @@
 import "~/styles/globals.css";
-import "@uploadthing/react/styles.css"
+import "@uploadthing/react/styles.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -27,22 +27,20 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-    <CSPostHogProvider>
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)}/>
-      <body className={`font-sans ${GeistSans.variable} dark`}>
-        <div className="h-screen grid grid-rows-[auto,1fr]">
-          <TopNav />
-          <main className="overflow-y-scroll">
-            {children}
-          </main>
-        </div>
-        {modal}
-        <div id="modal-root" />
-        <Toaster />
-      </body>
-    </html>
-    </CSPostHogProvider>
+      <CSPostHogProvider>
+        <html lang="en" className={`${GeistSans.variable}`}>
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+          <body className={`font-sans ${GeistSans.variable} dark`}>
+            <div className="grid h-screen grid-rows-[auto,1fr]">
+              <TopNav />
+              <main className="overflow-y-scroll">{children}</main>
+            </div>
+            {modal}
+            <div id="modal-root" />
+            <Toaster />
+          </body>
+        </html>
+      </CSPostHogProvider>
     </ClerkProvider>
   );
 }

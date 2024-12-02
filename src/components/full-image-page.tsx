@@ -9,13 +9,17 @@ export default async function FullPageImageView(props: { id: number }) {
   const uploaderInfo = await (await clerkClient()).users.getUser(image.userId);
 
   return (
-    <div className="flex w-full h-full min-w-0">
-      <div className="flex-shrink flex justify-center items-center">
-        <img src={image.url} alt={image.name} className="object-contain flex-shrink" />
+    <div className="flex h-full w-full min-w-0">
+      <div className="flex flex-shrink items-center justify-center">
+        <img
+          src={image.url}
+          alt={image.name}
+          className="flex-shrink object-contain"
+        />
       </div>
 
-      <div className="w-48 flex flex-col flex-shrink-0 border-l">
-        <div className="text-lg border-b text-center p-2">{image.name}</div>
+      <div className="flex w-48 flex-shrink-0 flex-col border-l">
+        <div className="border-b p-2 text-center text-lg">{image.name}</div>
 
         <div className="flex flex-col p-2">
           <span>Uploaded By:</span>
@@ -27,12 +31,16 @@ export default async function FullPageImageView(props: { id: number }) {
         </div>
 
         <div className="p-2">
-          <form action={async () => {
-            "use server";
+          <form
+            action={async () => {
+              "use server";
 
-            await deleteImage(props.id);
-          }}>
-            <Button type="submit" variant="destructive">Delete</Button>
+              await deleteImage(props.id);
+            }}
+          >
+            <Button type="submit" variant="destructive">
+              Delete
+            </Button>
           </form>
         </div>
       </div>

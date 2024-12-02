@@ -1,4 +1,6 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib",
-    "editor.tabSize": 2,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.tabSize": 2,
+  "prettier.withNodeModules": true,
+  "editor.formatOnSave": true
 }

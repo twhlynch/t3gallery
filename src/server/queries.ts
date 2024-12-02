@@ -39,12 +39,9 @@ export async function deleteImage(id: number) {
 
   if (!user.userId) throw new Error("Unauthorized");
 
-  await db.delete(images).where(
-    and(
-      eq(images.id, id), 
-      eq(images.userId, user.userId)
-    )
-  );
+  await db
+    .delete(images)
+    .where(and(eq(images.id, id), eq(images.userId, user.userId)));
 
   analyticsServerClient.capture({
     distinctId: user.userId,
